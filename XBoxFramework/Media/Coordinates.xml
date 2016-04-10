@@ -1,0 +1,88 @@
+<?xml version="1" ?>
+<!------Player Smiles--------------------->
+<SMILE_1 x=0 y=475 rightX=49 rightY=503 />
+<SMILE_2 x=56 y=475 rightX=102 rightY=497 />
+<SMILE_3 x=108 y=475 rightX=157 rightY=497 />
+<SMILE_4 x=323 y=477 rightX=388 rightY=500 />
+<!-------Enemy Smiles---------------------->
+<SMILE_5 x=164 y=477 rightX=242 rightY=500 />
+<SMILE_6 x=254 y=477 rightX=314 rightY=498 />
+<SMILE_7 x=458 y=477 rightX=500 rightY=500 />
+
+<!---Friendly Discs-------->
+<DISC_1 x=625 y=125 rightX=750 rightY=250 />
+<DISC_2 x=750 y=125 rightX=875 rightY=250 />
+<DISC_3 x=875 y=125 rightX=1000 rightY=250 />
+<DISC_4 x=0 y=250 rightX=125 rightY=375/>
+<DISC_5 x=125 y=250 rightX=250 rightY=375 />
+<DISC_6 x=250 y=250 rightX=375 rightY=375 />
+<DISC_7 x=375 y=250 rightX=500 rightY=375 />
+<DISC_8 x=500 y=250 rightX=625 rightY=375 />
+
+<!-------Enemy Discs---------------->
+<DISC_9 x=625 y=250 rightX=750 rightY=375/>
+<DISC_10 x=750 y=250 rightX=875 rightY=375/>
+<DISC_11 x=875 y=250 rightX=1000 rightY=375/>
+
+<!-------Bonus Discs------------------>
+<!----Mega Jump--->
+<DISC_12 x=0 y=0 rightX=125 rightY=125/>
+
+<EYE x=511 y=485 rightX=517 rightY=490 />
+
+<!-----------PLAYER FRAMES-------------------->
+<PLAYER_FRAME1 x=0 y=375 rightX=42 rightY=406 />
+<PLAYER_FRAME2 x="" y="" rightX="" rightY="" />
+<PLAYER_FRAME3 x="" y="" rightX="" rightY="" />
+<PLAYER_FRAME4 x="" y="" rightX="" rightY="" />
+<PLAYER_FRAME5 x="" y="" rightX="" rightY="" />
+<PLAYER_FRAME6 x="" y="" rightX="" rightY="" />
+
+<FALL_FRAME1 x=0 y=540 rightX=45 rightY=568 />
+<FALL_FRAME2 x=3 y=580 rightX=60 rightY= 603/>
+<FALL_FRAME3 x=4 y=610 rightX=60 rightY=634 />
+<FALL_FRAME4 x=6 y=640 rightX=60 rightY=665 />
+<FALL_FRAME5 x=2 y=670 rightX=60 rightY=697 />
+
+
+<DEAD_FRAME1 x=527 y=447 rightX=559 rightY=484 />
+<DEAD_FRAME2 x=580 y=447 rightX=610 rightY=484/>
+<DEAD_FRAME3 x=646 y=447 rightX=675 rightY=484 />
+<DEAD_FRAME4 x=703 y=447 rightX=734 rightY=484 />
+<DEAD_FRAME5 x=758 y=447 rightX=787 rightY=484 />
+<DEAD_FRAME6 x=824 y=447 rightX=854 rightY=484 />
+<DEAD_FRAME7 x=901 y=447 rightX=923 rightY=484/>
+<DEAD_FRAME8 x=958 y=447 rightX=992 rightY=484 />
+
+
+
+
+<!----------SPIKE/SPOKE------------------------->
+<DISC_SPIKE x=500 y=125 rightX=625 rightY=250 />
+<DISC_FRIENDLY    x=0 y=125 rightX=125 rightY=250/>
+
+<SLIDE x=39 y=509 rightX=129 rightY=529/>
+
+<!-------------WIN DISC----------------------->
+<WIN_DISC x=1 y=716 rightX=130 rightY=856 />
+<BALCONY  x=144 y=773 rightX=232    rightY=824/>
+
+
+<!-------------PRINCESS WAIT FRAME----------->
+<PRINCESS_1 x=1 y=916 rightX=74 rightY=1016 />
+<PRINCESS_2 x=82 y=916 rightX=141 rightY=1016 />
+<PRINCESS_3 x=158 y=916 rightX=221 rightY=1016 />
+<PRINCESS_4 x=235 y=916 rightX=290 rightY=1016 />
+<PRINCESS_5 x=314 y=916 rightX=367 rightY=1016 />
+<PRINCESS_6 x=379 y=916 rightX=430 rightY=1016 />
+<PRINCESS_7 x=450 y=916 rightX=504 rightY=1016 />
+<!------------BURINING PRINCESS--------------->
+<PRINCESS_8 x=849 y=916 rightX=921 rightY=1016 />
+<PRINCESS_9 x=940 y=916 rightX=1008 rightY=1016 />
+
+<!------------COLLECTIBLE----------------->
+<FIRE_1 x=861 y=745 rightX=877 rightY=759/>
+<FIRE_2 x=901 y=742 rightX=920 rightY=765/>
+<FIRE_3 x=944 y=742 rightX=959 rightY=765/>
+<FIRE_4 x=992 y=742 rightX=1007 rightY=765/>
+

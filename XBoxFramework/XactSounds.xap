@@ -1,0 +1,186 @@
+Signature = XACT;
+Version = 9;
+
+Options
+{
+    Project Header File = XactSounds.h;
+    Cue List File = XactSounds.txt;
+}
+
+Wave Bank
+{
+    Name = WaveBank;
+    Bank File = media\sounds\XactSounds_streaming.xwb;
+    Alignment = 512;
+    Streaming = 1;
+    Entry Names = 1;
+    Bank Last Modified Low = 450817510;
+    Bank Last Modified High = 30487148;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+
+    Entry
+    {
+        Name = hit;
+        File = Media\Sounds\hit.wav;
+        Format Tag = 0;
+        Channels = 1;
+        Sampling Rate = 44100;
+        Bits Per Sample = 1;
+        Play Region Offset = 44;
+        Play Region Length = 26024;
+        Loop Region Offset = 0;
+        Loop Region Length = 0;
+        File Type = 0;
+        Last Modified Low = 3711830146;
+        Last Modified High = 30487124;
+    }
+
+    Entry
+    {
+        Name = BgMusic;
+        File = Media\Sounds\BgMusic.wav;
+        Format Tag = 0;
+        Channels = 2;
+        Sampling Rate = 44100;
+        Bits Per Sample = 1;
+        Play Region Offset = 78;
+        Play Region Length = 14137532;
+        Loop Region Offset = 0;
+        Loop Region Length = 0;
+        File Type = 0;
+        Last Modified Low = 3708706946;
+        Last Modified High = 30487124;
+    }
+
+    Entry
+    {
+        Name = jump;
+        File = Media\Sounds\jump.wav;
+        Format Tag = 0;
+        Channels = 1;
+        Sampling Rate = 44100;
+        Bits Per Sample = 1;
+        Play Region Offset = 44;
+        Play Region Length = 22856;
+        Loop Region Offset = 0;
+        Loop Region Length = 0;
+        File Type = 0;
+        Last Modified Low = 3616728706;
+        Last Modified High = 30487124;
+    }
+}
+
+Sound Bank
+{
+    Name = SoundBank;
+    Bank File = media\sounds\XactSounds.xsb;
+    Bank Last Modified Low = 450973688;
+    Bank Last Modified High = 30487148;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+
+    Sound
+    {
+        Name = hit;
+
+        Track
+        {
+            Play with Pitch and Volume Variation
+            {
+                Loop Count = 65535;
+                Pitch Low = 0;
+                Pitch High = 0;
+                Volume Low = 0;
+                Volume High = 0;
+
+                Registered Wave
+                {
+                    Wave Bank = WaveBank;
+                    Wave Entry = hit;
+                    Wave Entry Index = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = BgMusic;
+
+        Track
+        {
+            Play with Pitch and Volume Variation
+            {
+                Loop Count = 65535;
+                Pitch Low = 0;
+                Pitch High = 0;
+                Volume Low = 0;
+                Volume High = 0;
+
+                Registered Wave
+                {
+                    Wave Bank = WaveBank;
+                    Wave Entry = BgMusic;
+                    Wave Entry Index = 1;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = jump;
+
+        Track
+        {
+            Play with Pitch and Volume Variation
+            {
+                Pitch Low = 0;
+                Pitch High = 0;
+                Volume Low = 0;
+                Volume High = 0;
+
+                Registered Wave
+                {
+                    Wave Bank = WaveBank;
+                    Wave Entry = jump;
+                    Wave Entry Index = 2;
+                }
+            }
+        }
+    }
+
+    Cue
+    {
+        Name = hit;
+
+        Sound
+        {
+            Sound = hit;
+            Sound Index = 0;
+        }
+    }
+
+    Cue
+    {
+        Name = BgMusic;
+
+        Sound
+        {
+            Sound = BgMusic;
+            Sound Index = 1;
+        }
+    }
+
+    Cue
+    {
+        Name = jump;
+
+        Sound
+        {
+            Sound = jump;
+            Sound Index = 2;
+        }
+    }
+}

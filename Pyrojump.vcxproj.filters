@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Source\Collectible.cpp" />
+    <ClCompile Include="Source\game.cpp" />
+    <ClCompile Include="Source\LevelLoader.cpp" />
+    <ClCompile Include="Source\random.cpp" />
+    <ClCompile Include="Source\Renderer.cpp" />
+    <ClCompile Include="Source\XBoxFramework.cpp" />
+    <ClCompile Include="Source\BackgroundManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CameraManagerC.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CollisionManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DiscManagerC.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FontManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameOverManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LevelTextManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MainMenuManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlayerManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PrincessManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ScoreManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SoundManager.cpp">
+      <Filter>Singleton Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinystr.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxml.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxmlerror.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxmlparser.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\openGLFramework.cpp">
+      <Filter>OpenGL Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\openGLStuff.cpp">
+      <Filter>OpenGL Framework</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SOIL.h">
+      <Filter>OpenGL Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collectible.h" />
+    <ClInclude Include="Source\game.h" />
+    <ClInclude Include="Source\glut.h" />
+    <ClInclude Include="Source\LevelLoader.h" />
+    <ClInclude Include="Source\random.h" />
+    <ClInclude Include="Source\Renderer.h" />
+    <ClInclude Include="Source\LinkedList.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Queue.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stack.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BackgroundManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CameraManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CollisionManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DiscManagerC.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FontManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameOverManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LevelTextManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MainMenuManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayerManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PrincessMaanger.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScoreManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SoundManager.h">
+      <Filter>Singleton Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tinystr.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tinyxml.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\openGLFramework.h">
+      <Filter>OpenGL Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\openGLStuff.h">
+      <Filter>OpenGL Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Constants.h">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\types.h">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\baseTypes.h">
+      <Filter>Constants</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="OpenGL Framework">
+      <UniqueIdentifier>{1d491520-60c0-4425-94d9-c2793f6bcf2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures">
+      <UniqueIdentifier>{d5958448-868b-4919-a6fa-ac6bf13caae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singleton Managers">
+      <UniqueIdentifier>{c35e608f-d11c-4595-b600-66afb9d17558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{a390d0ea-a50e-4438-be3f-78bb69f0f52d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TinyXML">
+      <UniqueIdentifier>{5f40cc3c-4a4a-446e-a9c8-709a8f313ea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constants">
+      <UniqueIdentifier>{94b9a6b3-713c-4429-b9f2-53bb4422a08a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

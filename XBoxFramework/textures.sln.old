@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Textures", "Textures.vcproj", "{652C7D60-BC02-4E09-96DD-9300FFFF001C}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Profile
+		ConfigName.2 = Profile_FastCap
+		ConfigName.3 = Release
+		ConfigName.4 = Release_LTCG
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Debug.ActiveCfg = Debug|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Debug.Build.0 = Debug|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Profile.ActiveCfg = Profile|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Profile.Build.0 = Profile|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Profile_FastCap.ActiveCfg = Profile_FastCap|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Profile_FastCap.Build.0 = Profile_FastCap|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Release.ActiveCfg = Release|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Release.Build.0 = Release|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Release_LTCG.ActiveCfg = Release_LTCG|Xbox
+		{652C7D60-BC02-4E09-96DD-9300FFFF001C}.Release_LTCG.Build.0 = Release_LTCG|Xbox
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

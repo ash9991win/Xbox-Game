@@ -1,0 +1,36 @@
+<?xml version="1" ?>
+<LEVEL1>
+     <PLAYER_START x=64 y=204/>
+     <DISCS NO=3/>
+     <DISC_1 x=64  y=335  type=1 model=2 speed=2.5 radius=100 direction=1 smile=1/>
+     <DISC_2 x=387 y=374  type=1 model=1 speed=2.5 radius=75 direction=0 smile=1 />
+     <DISC_3 x=763 y=398  type=1 model=1 speed=2.5 radius=70 direction=1 smile=1 />
+     <TEXT NO=2/>
+     <TEXT_1 x=400 y=700 width=132 height=53 value="JUMP"/>
+     <TEXT_2 x=1300 y=268 width=270 height=52 value="INCINERATE THE PRINCESS"/>
+     <COLLECTIBLE NO=3/>
+     <FIRE_1 angle=0 width=30 height=30 disc=1/>
+     <FIRE_2 angle=45 width=30 height=30 disc=2/>
+     <FIRE_3 angle=65 width=30 height=30 disc=3/>
+     <WIN_POINT x=1024 y=402 width=100 height=100/>
+</LEVEL1>
+
+<LEVEL2>
+     <PLAYER_START x=850 y=58/>
+     <DISCS NO=5/>
+     <DISC_1 x=840  y=58  type=3 model=2 speed=2.5 radius=75 direction=1 smile=1/>
+     <DISC_2 x=490 y=400  type=1 model=1 speed=2.5 radius=75 direction=0 smile=1 />
+     <DISC_3 x=490 y=800  type=9 model=1 speed=5 radius=75 direction=1 smile=1 />
+     <DISC_4 x=590 y=800  type=4 model=1 speed=5 radius=75 direction=0 smile=1 />
+     <DISC_5 x=840 y=800  type=9 model=1 speed=2.5 radius=75 direction=0 smile=1 />
+     <COLLECTIBLE NO=6/>
+     <FIRE_1 angle=45 width=30 height=30 disc=2/>
+     <FIRE_2 angle=-45 width=30 height=30 disc=2/>
+     <FIRE_3 angle=-135 width=30 height=30 disc=2/>
+     <FIRE_4 angle=135 width=30 height=30 disc=2/>
+     <FIRE_5 angle=-90 width=30 height=30 disc=4/>
+     <FIRE_6 angle=90 width=30 height=30 disc=4/>
+     <WIN_POINT x=589 y=1124 width=100 height=100/>
+<TEXT NO=1/>
+     <TEXT_1 x=600 y=700 width=132 height=53 value="JUMP FAST!"/>
+</LEVEL2>

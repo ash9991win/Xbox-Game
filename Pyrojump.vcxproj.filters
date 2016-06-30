@@ -67,11 +67,9 @@
     <ClCompile Include="Source\openGLStuff.cpp">
       <Filter>OpenGL Framework</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ReservationFunctor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SOIL.h">
-      <Filter>OpenGL Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Collectible.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\glut.h" />
@@ -150,6 +148,17 @@
     <ClInclude Include="Source\baseTypes.h">
       <Filter>Constants</Filter>
     </ClInclude>
+    <ClInclude Include="Source\SOIL.h" />
+    <ClInclude Include="Source\Hashmap.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SList.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ReservationFunctor.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="OpenGL Framework">
@@ -170,5 +179,19 @@
     <Filter Include="Constants">
       <UniqueIdentifier>{94b9a6b3-713c-4429-b9f2-53bb4422a08a}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Hashmap.inl">
+      <Filter>Data Structures</Filter>
+    </None>
+    <None Include="Source\Vector.inl">
+      <Filter>Data Structures</Filter>
+    </None>
+    <None Include="Source\Stack.inl">
+      <Filter>Data Structures</Filter>
+    </None>
+    <None Include="Source\SList.inl">
+      <Filter>Data Structures</Filter>
+    </None>
   </ItemGroup>
 </Project>

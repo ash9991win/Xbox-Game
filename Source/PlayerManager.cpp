@@ -23,23 +23,11 @@
 #include "PlayerManager.h"
 #include "CameraManager.h"
 #include "LevelLoader.h"
-PlayerManager* PlayerManager::sInstance = NULL;
-
-PlayerManager* PlayerManager::createInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-	{
-		sInstance = new PlayerManager();
-		return sInstance;
-	}
-}
-
+PlayerManager* PlayerManager::sInstance = nullptr;
 PlayerManager* PlayerManager::getInstance()
 {
+	if (sInstance == nullptr)
+		sInstance = new PlayerManager();
 	return sInstance;
 }
 Vector2 PlayerManager::getPosition()
@@ -81,11 +69,11 @@ void PlayerManager::changeCurrentState(PlayerStates newState)
 }
 
 PlayerManager::PlayerManager() {
-	playerRenderer = NULL;
+	playerRenderer = nullptr;
 }
 
 PlayerManager::~PlayerManager() {
-	if (playerRenderer != NULL) {
+	if (playerRenderer != nullptr) {
 		delete playerRenderer;
 	}
 }
@@ -166,7 +154,7 @@ void PlayerManager::Init()
 		deadAnimation[i - 1].height = abs(fallWidthHeight.y - fallPlayerTexture.y);
 	}
 
-	if (playerRenderer == NULL) {
+	if (playerRenderer == nullptr) {
 		playerRenderer = new Renderer(TEXT_PLAYER);
 	}
 
@@ -241,8 +229,8 @@ void PlayerManager::Update(DWORD newMS)
 		else
 		{
 			currentTime += newMS / 10000.0f;
-			mPosition.x += 10* mVelocity.x * currentTime;
-			mPosition.y += 10* mVelocity.y * currentTime;
+			mPosition.x += mVelocity.x * currentTime;
+			mPosition.y += mVelocity.y * currentTime;
 	
 		}
 		break;

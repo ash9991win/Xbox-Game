@@ -1,0 +1,39 @@
+﻿Build started 6/29/2016 8:40:39 PM.
+     1>Project "C:\Users\anarayanan\Documents\GitHub\XBox-Game\Pyrojump.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"$SolutionDirSource" /I"C:\Program Files (x86)\Visual Leak Detector\include" /Zi /nologo /W3 /WX- /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _DEBUG /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\PlayerManager.cpp
+         PlayerManager.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\anarayanan\Documents\GitHub\XBox-Game\Debug\Pyrojump.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" opengl32.lib glu32.lib glut32.lib soil.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\anarayanan\Documents\GitHub\XBox-Game\Debug\Pyrojump.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"C:\Users\anarayanan\Documents\GitHub\XBox-Game\Debug\Pyrojump.lib" /MACHINE:X86 /SAFESEH Debug\BackgroundManager.obj
+         Debug\CameraManagerC.obj
+         Debug\Collectible.obj
+         Debug\CollisionManager.obj
+         Debug\DiscManagerC.obj
+         Debug\FontManager.obj
+         Debug\game.obj
+         Debug\GameOverManager.obj
+         Debug\InputManager.obj
+         Debug\LevelLoader.obj
+         Debug\LevelTextManager.obj
+         Debug\MainMenuManager.obj
+         Debug\openGLFramework.obj
+         Debug\openGLStuff.obj
+         Debug\physics.obj
+         Debug\PlayerManager.obj
+         Debug\PrincessManager.obj
+         Debug\random.obj
+         Debug\Renderer.obj
+         Debug\ReservationFunctor.obj
+         Debug\ScoreManager.obj
+         Debug\SoundManager.obj
+         Debug\tinystr.obj
+         Debug\tinyxml.obj
+         Debug\tinyxmlerror.obj
+         Debug\tinyxmlparser.obj
+         Debug\XBoxFramework.obj
+         Pyrojump.vcxproj -> C:\Users\anarayanan\Documents\GitHub\XBox-Game\Debug\Pyrojump.exe
+     1>Done Building Project "C:\Users\anarayanan\Documents\GitHub\XBox-Game\Pyrojump.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.72

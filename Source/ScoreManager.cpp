@@ -7,34 +7,24 @@
 #include "ScoreManager.h"
 #include "FontManager.h"
 
-ScoreManagerC*	ScoreManagerC::sInstance = NULL;
+ScoreManagerC*	ScoreManagerC::sInstance = nullptr;
 Renderer*		ScoreManagerC::renderer;
 const DWORD		ScoreManagerC::BAR_ANIMATION_DURATION = 1000;
-
-ScoreManagerC *ScoreManagerC::CreateInstance()
-{
-	if (sInstance != NULL)	return sInstance;
-	else
-
-		sInstance = new ScoreManagerC();
-	return sInstance;
-}
-
 ScoreManagerC::ScoreManagerC() 
 {
-	renderer = NULL;
+	renderer = nullptr;
 }
 
 ScoreManagerC::~ScoreManagerC() 
 {
-	if (renderer != NULL) {
+	if (renderer != nullptr) {
 		delete renderer;
 	}
 }
 
 void ScoreManagerC::init()
 {
-	if (renderer == NULL) {
+	if (renderer == nullptr) {
 		renderer = new Renderer(TEXT_TRANSITION);
 	}
 

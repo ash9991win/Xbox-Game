@@ -2,22 +2,8 @@
 #include"PrincessMaanger.h"
 #include"PlayerManager.h"
 #include"ScoreManager.h"
-LevelLoader* LevelLoader::sInstance = NULL;
-
-LevelLoader* LevelLoader::createInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-	{
-		sInstance = new LevelLoader();
-		return sInstance;
-	}
-}
-
-
+using namespace Library;
+LevelLoader* LevelLoader::sInstance = nullptr;
 void LevelLoader::LoadFile(TiXmlDocument &doc, const char * fileName){
 #if IS_COMP
 	doc.LoadFile(fileName);
@@ -26,10 +12,10 @@ void LevelLoader::LoadFile(TiXmlDocument &doc, const char * fileName){
 	HANDLE fileHandler = CreateFile((LPCSTR)fileName,	// file name
 										GENERIC_READ,	// access mode
 									 FILE_SHARE_READ,	// share mode
-												NULL,	// SD (Ignore, mark NULL)
+												nullptr,	// SD (Ignore, mark nullptr)
 										OPEN_ALWAYS,//OPEN_EXISTING,	// how to create
 								FILE_ATTRIBUTE_NORMAL,	// file attributes
-												NULL);	// handle to template file (Un-implemented, Mark NULL)
+												nullptr);	// handle to template file (Un-implemented, Mark nullptr)
 
 	// If file does not exist, throw exception
 	if( fileHandler == INVALID_HANDLE_VALUE){
@@ -38,7 +24,7 @@ void LevelLoader::LoadFile(TiXmlDocument &doc, const char * fileName){
 
 	// Get File Size to allocate
 	DWORD fileSize = GetFileSize(fileHandler,		// handle to file
-										NULL);		// high-order doubleword of file size (can be NULL)
+										nullptr);		// high-order doubleword of file size (can be nullptr)
 	
 	// Allocate memory from local heap
 	HANDLE fileData = LocalAlloc(LMEM_FIXED, fileSize);
@@ -49,7 +35,7 @@ void LevelLoader::LoadFile(TiXmlDocument &doc, const char * fileName){
 								fileData,	// data buffer
 								fileSize,	// number of bytes to read
 								&bytesRead,	// number of bytes read
-									NULL);	// for overlapped buffers only
+									nullptr);	// for overlapped buffers only
 
 	// If the function fails, the return value is zero
 	if(result == 0 || bytesRead != fileSize){
@@ -60,7 +46,7 @@ void LevelLoader::LoadFile(TiXmlDocument &doc, const char * fileName){
 	doc.Parse((const char*)fileData, 0, TIXML_ENCODING_UTF8);
 
 	// Free memory
-	if(LocalFree(fileData) != NULL){
+	if(LocalFree(fileData) != nullptr){
 		throw 0;
 	}
 #endif
@@ -138,7 +124,7 @@ void LevelLoader::LoadLevel(int levelNo)
 		newDisc->collider.mCenter.x=newDisc->center.x;
 		newDisc->collider.mCenter.y=newDisc->center.y;
 	
-		discList->Append(newDisc);
+		discList->PushBack(newDisc);
 	}
 
 	TiXmlElement *princessElement;
@@ -185,12 +171,12 @@ void LevelLoader::LoadLevel(int levelNo)
 		*/
 		float angleOfFlame = atof(fireElement->Attribute("angle"));
 		int discID = atof(fireElement->Attribute("disc"));
-		discLoader->Start();
+		discLoader = discList->begin();
 		for (int counter = 0; counter < discID - 1; counter++)
 		{
-			discLoader->forth();
+			discLoader++;
 		}
-		Discs *currentDisc = discLoader->data();
+		Discs *currentDisc = (*discLoader);
 		//Now to get the position, 
 		fire->mPosition.x = currentDisc->center.x + currentDisc->spokeRadius * cos(angleOfFlame * DEG_TO_RAD)  - 10;
 		fire->mPosition.y = currentDisc->center.y + currentDisc->spokeRadius * sin(angleOfFlame * DEG_TO_RAD) - 10 ;
@@ -208,7 +194,7 @@ void LevelLoader::LoadLevel(int levelNo)
 			sprintf(fireCoord, "FIRE_%d", j);
 			fire->fireCoordinates[j - 1] = getTextureData(fireCoord);
 		}
-		collectibleList->Append(fire);
+		collectibleList->PushBack(fire);
 	}
 	int noOfText = atof(level1->FirstChildElement("TEXT")->Attribute("NO"));
 	TiXmlElement *textElement;
@@ -227,7 +213,7 @@ void LevelLoader::LoadLevel(int levelNo)
 		text->dimension.x = atof(textElement->Attribute("width")) * IMAGE_TO_SCREEN_X / SCREEN_WIDTH;
 		text->dimension.y = atof(textElement->Attribute("height")) * IMAGE_TO_SCREEN_X / SCREEN_WIDTH;
 
-		textList->Append(text);
+		textList->PushBack(text);
 	}
 	
 }
@@ -434,18 +420,18 @@ TexCoord LevelLoader::getTextureData(char* smileID)
 	smile_coord.height = abs(rightXy.y - smile_coord.y);
 	return smile_coord;
 }
-void LevelLoader::setDiscList(LinkedList<Discs*> *newList)
+void LevelLoader::setDiscList(Vector<Discs*> &newList)
 {
-	discList = newList;
-	discLoader = new ListIterator<Discs*>(discList, discList->m_head);
+	discList = &newList;
+	discLoader = discList->begin();
 }
 
 
-void LevelLoader::setFireList(LinkedList<FirePoint*> *newList)
+void LevelLoader::setFireList(Vector<FirePoint*>& newList)
 {
-	collectibleList = newList;
+	collectibleList = &newList;
 }
-void LevelLoader::setTextList(LinkedList<textToDisplay*> *newList)
+void LevelLoader::setTextList(Vector<textToDisplay*>& newList)
 {
-	textList = newList;
+	textList = &newList;
 }

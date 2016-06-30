@@ -1,22 +1,10 @@
 #include"LevelTextManager.h"
 #include"CameraManager.h"
-LevelTextManager* LevelTextManager::sInstance = NULL;
-
-LevelTextManager* LevelTextManager::createInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-	{
-		sInstance = new LevelTextManager();
-	}
-}
+using namespace Library;
+LevelTextManager* LevelTextManager::sInstance = nullptr;
 void LevelTextManager::init()
 {
-	textList = new LinkedList<textToDisplay*>();
-	textListIterator = new ListIterator<textToDisplay*>(textList, textList->m_head);
+	textList.Clear();
 }
 
 void LevelTextManager::render()
@@ -26,12 +14,9 @@ void LevelTextManager::render()
 	CameraManagerC::getInstance()->getCameraPosition(cameraPosition);
 	cameraPosition.x /= SCREEN_WIDTH;
 	cameraPosition.y /= SCREEN_HEIGHT;
-	textListIterator->Start();
-	while (!textListIterator->hasReachedEnd())
+	for(auto currentText : textList)
 	{
-		textToDisplay *currentText = textListIterator->data();
 		FontManagerC::GetInstance()->DrawStaticText(currentText->currentText, currentText->mPosition, currentText->dimension);
-		textListIterator->forth();
 	}
 
 }

@@ -1,16 +1,6 @@
 #include"PrincessMaanger.h"
 #include"CameraManager.h"
-PrincessManager* PrincessManager::sInstance = NULL;
-
-PrincessManager* PrincessManager::createInstance()
-{
-	if (sInstance == NULL)
-	{
-		sInstance = new PrincessManager();
-	}
-	return sInstance;
-}
-
+PrincessManager* PrincessManager::sInstance = nullptr;
 void PrincessManager::init()
 {
 	mPosition.x = mPosition.y = 0;

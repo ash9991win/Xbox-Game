@@ -15,7 +15,6 @@
 class CameraManagerC
 {
 public:
-	static CameraManagerC* createInstance();
 	static CameraManagerC* getInstance();
 	void Init();
 	void render();

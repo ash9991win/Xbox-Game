@@ -13,6 +13,8 @@
 #include "FontManager.h"
 #include "ScoreManager.h"
 #include"LevelTextManager.h"
+#include "Vector.h"
+using namespace Library;
 #if IS_COMP
 
 
@@ -27,31 +29,13 @@ BOOL Initialize (GL_Window* window, Keys* keys)					// Any OpenGL Initialization
 }
 #endif
 
-CGame* CGame::sInstance=NULL;
+CGame* CGame::sInstance=nullptr;
 
 void CGame::init()
 {
 	gameover_duration = 3000;
 	gameover_timer = 0;
 	Renderer::init2();
-	MainMenuManagerC::createInstance();
-	GameOverManagerC::createInstance();
-	BackgroundManagerC::CreateInstance();
-	DiscManagerC::createInstance();
-	Collectible::createInstance();
-	FontManagerC::CreateInstance();
-	PrincessManager::createInstance();
-	PlayerManager::createInstance();
-	Collectible::createInstance();
-	CameraManagerC::createInstance();
-	CollisionManager::createInstance();
-	InputManagerC::CreateInstance();
-	SoundManagerC::CreateInstance();
-	CameraManagerC::createInstance();
-	LevelTextManager::createInstance();
-	LevelLoader::createInstance();
-	ScoreManagerC::CreateInstance();
-
 	CameraManagerC::getInstance()->Init();
 	BackgroundManagerC::getInstance()->init(CGame::mScreenWidth, CGame::mScreenHeight);
 	FontManagerC::GetInstance()->init();
@@ -95,7 +79,7 @@ void CGame::UpdateFrame(DWORD milliseconds)
 		if(InputManagerC::getButtonPressed(GAME_KEY_QUIT))
 		{
 			LD_LAUNCH_DASHBOARD LaunchData = { XLD_LAUNCH_DASHBOARD_MAIN_MENU };
-            XLaunchNewImage( NULL, (LAUNCH_DATA*)&LaunchData );
+            XLaunchNewImage( nullptr, (LAUNCH_DATA*)&LaunchData );
 		}
 #endif
 		break;
@@ -110,9 +94,9 @@ void CGame::UpdateFrame(DWORD milliseconds)
 		ScoreManagerC::GetInstance()->changeState(SCORE_TRACKING);
 		ScoreManagerC::GetInstance()->collected = 0;
 		LevelTextManager::getInstance()->init();
-		LevelLoader::getInstance()->setDiscList(DiscManagerC::getInstance()->getDiscList());
-		LevelLoader::getInstance()->setFireList(Collectible::getInstance()->getFireList());
-		LevelLoader::getInstance()->setTextList(LevelTextManager::getInstance()->getTextList());
+		LevelLoader::getInstance()->setDiscList(*DiscManagerC::getInstance()->getDiscList());
+		LevelLoader::getInstance()->setFireList(*Collectible::getInstance()->getFireList());
+		LevelLoader::getInstance()->setTextList(*(LevelTextManager::getInstance()->getTextList()));
 		LevelLoader::getInstance()->LoadLevel(currentLevel);
 		currentState = PLAY_STATE;
 		break;
@@ -175,9 +159,9 @@ void CGame::UpdateFrame(DWORD milliseconds)
 			LevelTextManager::getInstance()->init();
 			FontManagerC::GetInstance()->init();
             ScoreManagerC::GetInstance()->collected = 0;
-			LevelLoader::getInstance()->setDiscList(DiscManagerC::getInstance()->getDiscList());
-			LevelLoader::getInstance()->setFireList(Collectible::getInstance()->getFireList());
-			LevelLoader::getInstance()->setTextList(LevelTextManager::getInstance()->getTextList());
+			LevelLoader::getInstance()->setDiscList(*DiscManagerC::getInstance()->getDiscList());
+			LevelLoader::getInstance()->setFireList(*Collectible::getInstance()->getFireList());
+			LevelLoader::getInstance()->setTextList(*LevelTextManager::getInstance()->getTextList());
 			LevelLoader::getInstance()->LoadLevel(currentLevel);
 			currentState = PLAY_STATE;
 
@@ -256,54 +240,50 @@ void CGame::DrawScene(void)
 
 void   CGame::checkForCollision()
 {
-	ListIterator<Discs*> *discIterator = DiscManagerC::getInstance()->getDiscs();
 	bool checkForCollision = true;
-	discIterator->Start();
-	while (!discIterator->hasReachedEnd() )
+	auto discList = DiscManagerC::getInstance()->getDiscList();
+	for(auto currentDisc :*discList)
 	{
-
-	if (CollisionManager::getInstance()->checkForCollision(discIterator->data()->collider, PlayerManager::getInstance()->getCollider()))
+	if (CollisionManager::getInstance()->checkForCollision(currentDisc->collider, PlayerManager::getInstance()->getCollider()))
 		{
-				if (discIterator->data()->discType == JUMPABLE_DISC)
+				if (currentDisc->discType == JUMPABLE_DISC)
 				{
-					if (PlayerManager::getInstance()->getRotatingPoint() != discIterator->data()->center)
+					if (PlayerManager::getInstance()->getRotatingPoint() != currentDisc->center)
 					{
-						PlayerManager::getInstance()->setRotationPoint(discIterator->data()->center,discIterator->data()->spokeRadius  );
-						PlayerManager::getInstance()->setRotationSpeed(discIterator->data()->speed);
-						PlayerManager::getInstance()->setDirection(discIterator->data()->direction);
-						PlayerManager::getInstance()->setDiscCollider(discIterator->data()->collider);
-						PlayerManager::getInstance()->discRadius = discIterator->data()->spokeRadius;
+						PlayerManager::getInstance()->setRotationPoint(currentDisc->center, currentDisc->spokeRadius  );
+						PlayerManager::getInstance()->setRotationSpeed(currentDisc->speed);
+						PlayerManager::getInstance()->setDirection(currentDisc->direction);
+						PlayerManager::getInstance()->setDiscCollider(currentDisc->collider);
+						PlayerManager::getInstance()->discRadius = currentDisc->spokeRadius;
 						PlayerManager::getInstance()->isMegajump = false;
 						PlayerManager::getInstance()->changeCurrentState(ROTATING_STATE);
-						discIterator->data()->canSeePlayer = true;
-						discIterator->data()->isVisited = true;
+						currentDisc->canSeePlayer = true;
+						currentDisc->isVisited = true;
 						break;
 					}
 				}
-				else if (discIterator->data()->discType == ENEMY_DISC)
+				else if (currentDisc->discType == ENEMY_DISC)
 					{
 						currentState = GAMEOVER_STATE;
 						gameover_timer = 0;
 						break;
 					}
-					else if (discIterator->data()->discType == MEGA_JUMP)
+					else if (currentDisc->discType == MEGA_JUMP)
 					{
-						if (PlayerManager::getInstance()->getRotatingPoint() != discIterator->data()->center)
+						if (PlayerManager::getInstance()->getRotatingPoint() != currentDisc->center)
 						{
-							PlayerManager::getInstance()->setRotationPoint(discIterator->data()->center, discIterator->data()->spokeRadius);
-							printf("%f %f \n", discIterator->data()->center.x, discIterator->data()->center.y);
-							PlayerManager::getInstance()->setRotationSpeed(discIterator->data()->speed);
-							PlayerManager::getInstance()->setDirection(discIterator->data()->direction);
-							PlayerManager::getInstance()->setDiscCollider(discIterator->data()->collider);
-							PlayerManager::getInstance()->discRadius = discIterator->data()->spokeRadius;
+							PlayerManager::getInstance()->setRotationPoint(currentDisc->center, currentDisc->spokeRadius);
+							PlayerManager::getInstance()->setRotationSpeed(currentDisc->speed);
+							PlayerManager::getInstance()->setDirection(currentDisc->direction);
+							PlayerManager::getInstance()->setDiscCollider(currentDisc->collider);
+							PlayerManager::getInstance()->discRadius = currentDisc->spokeRadius;
 							PlayerManager::getInstance()->isMegajump = true;
 							PlayerManager::getInstance()->changeCurrentState(ROTATING_STATE);
-							discIterator->data()->canSeePlayer = true;
-							discIterator->data()->isVisited = true;
+							currentDisc->canSeePlayer = true;
+							currentDisc->isVisited = true;
 						}
 					}
 				}
-	discIterator->forth();
 			}
 		if (CollisionManager::getInstance()->checkForCollision(PlayerManager::getInstance()->getCollider(), PrincessManager::getInstance()->collider))
 		{
@@ -323,11 +303,9 @@ void   CGame::checkForCollision()
 				}
 			
 		}
-		ListIterator<FirePoint*> *fireIterator = Collectible::getInstance()->getIterator();
-		fireIterator->Start();
-		while (!fireIterator->hasReachedEnd())
+		auto fireList = Collectible::getInstance()->getFireList();
+		for(auto current : *fireList)
 		{
-			FirePoint *current = fireIterator->data();
 
 			if (CollisionManager::getInstance()->checkForCollision(PlayerManager::getInstance()->getCollider(), current->collider) && current->isVisible)
 			{
@@ -335,7 +313,6 @@ void   CGame::checkForCollision()
 				ScoreManagerC::GetInstance()->collected++;
 
 			}
-			fireIterator->forth();
 		}
 }
 

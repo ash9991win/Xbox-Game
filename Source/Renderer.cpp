@@ -25,10 +25,10 @@ struct CUSTOMVERTEX
 
 #ifndef RENDERER_CPP
 #define RENDERER_CPP
-LPDIRECT3D8             g_pD3D       = NULL;          // Used to create the D3DDevice
-LPDIRECT3DDEVICE8       g_pd3dDevice = NULL;          // Our rendering device
-BYTE*                   g_pResourceSysMemData = NULL; // Sysmem data for the packed resource
-BYTE*                   g_pResourceVidMemData = NULL; // Vidmem data for the packed resource
+LPDIRECT3D8             g_pD3D       = nullptr;          // Used to create the D3DDevice
+LPDIRECT3DDEVICE8       g_pd3dDevice = nullptr;          // Our rendering device
+BYTE*                   g_pResourceSysMemData = nullptr; // Sysmem data for the packed resource
+BYTE*                   g_pResourceVidMemData = nullptr; // Vidmem data for the packed resource
 LPDIRECT3DTEXTURE8		g_pTextureMap[NUM_OF_TEXT_ID];
 LPD3DXSPRITE			m_sprite;					  // Sprite to draw the scene with
 #endif
@@ -40,7 +40,7 @@ LPD3DXSPRITE			m_sprite;					  // Sprite to draw the scene with
 HRESULT Renderer::InitD3D()
 {
     // Create the D3D object.
-    if( NULL == ( g_pD3D = Direct3DCreate8( D3D_SDK_VERSION ) ) )
+    if( nullptr == ( g_pD3D = Direct3DCreate8( D3D_SDK_VERSION ) ) )
         return E_FAIL;
 
     // Set up the structure used to create the D3DDevice.
@@ -55,7 +55,7 @@ HRESULT Renderer::InitD3D()
     d3dpp.SwapEffect             = D3DSWAPEFFECT_DISCARD;
 
     // Create the Direct3D device.
-    if( FAILED( g_pD3D->CreateDevice( 0, D3DDEVTYPE_HAL, NULL,
+    if( FAILED( g_pD3D->CreateDevice( 0, D3DDEVTYPE_HAL, nullptr,
                                       D3DCREATE_HARDWARE_VERTEXPROCESSING,
                                       &d3dpp, &g_pd3dDevice ) ) )
         return E_FAIL;
@@ -84,7 +84,7 @@ HRESULT Renderer::LoadPackedResource()
 {
     // Open the file to read the XPR headers
     FILE* file = fopen( "D:\\Media\\Resource.xpr", "rb" );
-    if( NULL == file )
+    if( nullptr == file )
         return E_FAIL;
 
     // Read in and verify the XPR magic header
@@ -217,7 +217,7 @@ void Renderer::init2()
 void Renderer::Begin(){
 #if IS_XBOX
 	// Clear the backbuffer and the zbuffer
-	g_pd3dDevice->Clear( 0, NULL, D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,
+	g_pd3dDevice->Clear( 0, nullptr, D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,
 		D3DCOLOR_XRGB(0,0,255), 1.0f, 0 );
 	m_sprite->Begin();
 #else
@@ -230,7 +230,7 @@ void Renderer::End(){
 	// Present the backbuffer contents to the display
 	//g_pd3dDevice->EndScene();
 	m_sprite->End();
-	g_pd3dDevice->Present( NULL, NULL, NULL, NULL );
+	g_pd3dDevice->Present( nullptr, nullptr, nullptr, nullptr );
 #endif
 }
 

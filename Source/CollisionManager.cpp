@@ -2,11 +2,11 @@
 #include"CollisionManager.h"
 #include"physics.h"
 #include<stdio.h>
-CollisionManager* CollisionManager::sInstance = NULL;
+CollisionManager* CollisionManager::sInstance = nullptr;
 
 CollisionManager* CollisionManager::createInstance()
 {
-	if (sInstance != NULL)
+	if (sInstance != nullptr)
 	{
 		return sInstance;
 	}

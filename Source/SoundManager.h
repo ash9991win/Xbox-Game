@@ -24,8 +24,10 @@ typedef enum {
 class SoundManagerC
 {
 public:
-	static SoundManagerC	*CreateInstance();
-	static SoundManagerC	*getInstance() { return sInstance; };
+	static SoundManagerC	*getInstance() {
+		if (sInstance == nullptr)
+			sInstance = new SoundManagerC();
+			return sInstance; };
 	void					init();
 	void					update(DWORD milliseconds);
 

@@ -20,8 +20,10 @@ typedef struct {
 class InputManagerC
 {
 public:
-	static InputManagerC	*CreateInstance();
-	static InputManagerC	*GetInstance() {return sInstance;};
+	static InputManagerC	*GetInstance() {
+		if (sInstance == nullptr)
+			sInstance = new InputManagerC();
+		return sInstance;};
 	void					init();
 	void					update(DWORD milliseconds);
 	static bool8_t			getButtonPressed(GAME_BUTTON button_type);

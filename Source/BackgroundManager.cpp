@@ -25,21 +25,13 @@
 
 #include "PlayerManager.h"
 //Draw the background
-BackgroundManagerC *BackgroundManagerC::sInstance = NULL;
+BackgroundManagerC *BackgroundManagerC::sInstance = nullptr;
 
-BackgroundManagerC* BackgroundManagerC::CreateInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-         sInstance = new BackgroundManagerC();
-		return sInstance;
 
-}
 BackgroundManagerC* BackgroundManagerC::getInstance()
 {
+	if (sInstance == nullptr)
+		sInstance = new BackgroundManagerC();
 	return sInstance;
 }
 void BackgroundManagerC::init(int width, int height)
@@ -69,10 +61,5 @@ void BackgroundManagerC::update(DWORD newMS)
 }
 void BackgroundManagerC::renderBackground()
 {
-
-
-
 	renderer->DrawSprite(mPosition, (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, mTextureCoordinates);
-
-
 };

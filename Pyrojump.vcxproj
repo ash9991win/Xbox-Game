@@ -121,6 +121,7 @@
     <ClCompile Include="Source\PrincessManager.cpp" />
     <ClCompile Include="Source\random.cpp" />
     <ClCompile Include="Source\Renderer.cpp" />
+    <ClCompile Include="Source\ReservationFunctor.cpp" />
     <ClCompile Include="Source\ScoreManager.cpp" />
     <ClCompile Include="Source\SoundManager.cpp" />
     <ClCompile Include="Source\tinystr.cpp" />
@@ -130,6 +131,9 @@
     <ClCompile Include="Source\XBoxFramework.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Hashmap.h" />
+    <ClInclude Include="Source\ReservationFunctor.h" />
+    <ClInclude Include="Source\SList.h" />
     <ClInclude Include="Source\SOIL.h" />
     <ClInclude Include="Source\BackgroundManager.h" />
     <ClInclude Include="Source\baseTypes.h" />
@@ -161,6 +165,13 @@
     <ClInclude Include="Source\tinystr.h" />
     <ClInclude Include="Source\tinyxml.h" />
     <ClInclude Include="Source\types.h" />
+    <ClInclude Include="Source\Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Hashmap.inl" />
+    <None Include="Source\SList.inl" />
+    <None Include="Source\Stack.inl" />
+    <None Include="Source\Vector.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

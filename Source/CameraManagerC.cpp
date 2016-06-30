@@ -4,23 +4,11 @@
 #include"Constants.h"
 #include "physics.h"
 #include"CameraManager.h"
-CameraManagerC* CameraManagerC::sInstance = NULL;
-
-CameraManagerC* CameraManagerC::createInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-	{
-		sInstance = new CameraManagerC();
-		return sInstance;
-	}
-}
-
+CameraManagerC* CameraManagerC::sInstance = nullptr;
 CameraManagerC* CameraManagerC::getInstance()
 {
+	if (sInstance == nullptr)
+		sInstance = new CameraManagerC();
 	return sInstance;
 }
 

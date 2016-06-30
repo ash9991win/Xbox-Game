@@ -6,8 +6,10 @@
 class FontManagerC
 {
 public:
-	static FontManagerC	*CreateInstance();
-	static FontManagerC	*GetInstance() { return sInstance; };
+	static FontManagerC	*GetInstance() { 
+		if (sInstance == nullptr)
+			sInstance = new FontManagerC();
+		return sInstance; };
 	~FontManagerC();
 
 	void				init();

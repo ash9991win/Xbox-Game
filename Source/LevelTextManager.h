@@ -1,7 +1,7 @@
 #pragma once
 #pragma once
 #include"Renderer.h"
-#include"LinkedList.h"
+#include"Vector.h"
 #include"Constants.h"
 #include"FontManager.h"
 class textToDisplay
@@ -17,20 +17,19 @@ class LevelTextManager
 {
 public:
 	static LevelTextManager* getInstance() {
+		if (sInstance == nullptr)
+			sInstance = new LevelTextManager();
 		return sInstance;
 	};
-	static LevelTextManager* createInstance();
 	void update(float_t newMS);
 	void init();
 	void render();
-	LinkedList<textToDisplay*>* getTextList() {
-		return textList;
+	Library::Vector<textToDisplay*>* getTextList() {
+		return &textList;
 	};
-	ListIterator<textToDisplay*>* getIterator() { return textListIterator; };
 private:
 	LevelTextManager() {};
 	static LevelTextManager* sInstance;
-	LinkedList<textToDisplay*> *textList;
-	ListIterator<textToDisplay*> *textListIterator;
+	Library::Vector<textToDisplay*> textList;
 
 };

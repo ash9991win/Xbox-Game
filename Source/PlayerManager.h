@@ -13,16 +13,13 @@ enum PlayerStates
 class PlayerManager
 {
 public:
-	static PlayerManager* createInstance();
 	static PlayerManager* getInstance();
 	~PlayerManager();
 	void Init();
 	void Update(DWORD milliseconds);
 	void Render();
 	Vector2 getPosition();
-	void    AddForce(Vector2 newForce);
 	void    AddForce();
-	Vector2 getVelocity();
 	Vector2 getHeading();
 	void    changeCurrentState(PlayerStates newState);
 	void    setRotationPoint(Vector2 rotationPoint,float_t radius);
@@ -39,9 +36,7 @@ public:
 	Circle  getCollider();
 	Rect    getRectCollider();
 	void    playFallAnimation();
-	void    playDeadAnimation();
 	bool    isgameOver() { return gameOver; };
-	bool    isDeadAnimationOver();
 	float_t deadanimationTime;
 	bool    amDead;
 	 float_t mWidth;

@@ -220,7 +220,7 @@ BOOL DestroyWindowGL (GL_Window* window)								// Destroy The OpenGL Window & R
 
 	if (window->init.isFullScreen)										// Is Window In Fullscreen Mode
 	{
-		ChangeDisplaySettings (NULL,0);									// Switch Back To Desktop Resolution
+		ChangeDisplaySettings (nullptr,0);									// Switch Back To Desktop Resolution
 	}
 	ShowCursor(TRUE);
 	return TRUE;														// Return True
@@ -329,7 +329,7 @@ BOOL RegisterWindowClass (Application* application)						// Register A Window Cl
 	windowClass.lpfnWndProc		= (WNDPROC)(WindowProc);				// WindowProc Handles Messages
 	windowClass.hInstance		= application->hInstance;				// Set The Instance
 	windowClass.hbrBackground	= (HBRUSH)(COLOR_APPWORKSPACE);			// Class Background Brush Color
-	windowClass.hCursor			= LoadCursor(NULL, IDC_ARROW);			// Load The Arrow Pointer
+	windowClass.hCursor			= LoadCursor(nullptr, IDC_ARROW);			// Load The Arrow Pointer
 	windowClass.lpszClassName	= application->className;				// Sets The Applications Classname
 	if (RegisterClassEx (&windowClass) == 0)							// Did Registering The Class Fail?
 	{
@@ -348,13 +348,13 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
     HANDLE handle_out = GetStdHandle(STD_OUTPUT_HANDLE);
     int hCrt = _open_osfhandle((long) handle_out, _O_TEXT);
     FILE* hf_out = _fdopen(hCrt, "w");
-    setvbuf(hf_out, NULL, _IONBF, 1);
+    setvbuf(hf_out, nullptr, _IONBF, 1);
     *stdout = *hf_out;
 
     HANDLE handle_in = GetStdHandle(STD_INPUT_HANDLE);
     hCrt = _open_osfhandle((long) handle_in, _O_TEXT);
     FILE* hf_in = _fdopen(hCrt, "r");
-    setvbuf(hf_in, NULL, _IONBF, 128);
+    setvbuf(hf_in, nullptr, _IONBF, 128);
     *stdin = *hf_in;
 
 

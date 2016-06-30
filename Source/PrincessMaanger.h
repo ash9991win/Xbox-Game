@@ -2,15 +2,16 @@
 #include "baseTypes.h"
 //#include<Windows.h>
 #include"Renderer.h"
-#include"LinkedList.h"
 #include"baseTypes.h"
 #include"physics.h"
 #include"Constants.h"
 class PrincessManager
 {
 public:
-	static PrincessManager* getInstance() { return sInstance; }
-	static PrincessManager* createInstance();
+	static PrincessManager* getInstance() {
+		if (sInstance == nullptr)
+			sInstance = new PrincessManager();
+		return sInstance; }
 	void init();
 	void Update(DWORD newMS);
 	void render();

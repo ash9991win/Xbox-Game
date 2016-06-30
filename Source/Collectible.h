@@ -1,6 +1,6 @@
 #pragma once
 #include"Renderer.h"
-#include"LinkedList.h"
+#include"Vector.h"
 #include"Constants.h"
 class FirePoint
 {
@@ -19,21 +19,20 @@ class Collectible
 {
 public:
 	static Collectible* getInstance() {
+		if (sInstance == nullptr)
+			sInstance = new Collectible();
 		return sInstance;
 	};
-	static Collectible* createInstance();
 	void update(float_t newMS);
 	void init();
 	void render();
-	LinkedList<FirePoint*>* getFireList();
-	ListIterator<FirePoint*>* getIterator() { return collectibleIterator; };
+	Library::Vector<FirePoint*>* getFireList();
 private:
 	Collectible() {};
 	static Collectible* sInstance;
 	float_t currentTime;
 	float_t animationTime;
 	Renderer *fireRenderer;
-	LinkedList<FirePoint*> *collectibleList;
-	ListIterator<FirePoint*> *collectibleIterator;
+	Library::Vector<FirePoint*> collectibleList;
 
 };

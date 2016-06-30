@@ -16,7 +16,7 @@ public:
 		newNode->m_next = m_next;
 
 		m_next = newNode;
-		m_next->m_next = NULL;
+		m_next->m_next = nullptr;
 	}
 };
 template<class Datatype>
@@ -52,7 +52,7 @@ public:
 		{
 			m_head = m_tail = new SListNode<Datatype>;
 			m_head->m_data = data;
-			m_head->m_next = NULL;
+			m_head->m_next = nullptr;
 
 		}
 		else
@@ -169,11 +169,11 @@ public:
 	}
 	bool hasReachedEnd()
 	{
-	/*	if(m_node == NULL)
+	/*	if(m_node == nullptr)
 		{ 
 			return true;
 		}*/
-		/*if (m_node->m_next == NULL)
+		/*if (m_node->m_next == nullptr)
 		{
 			return true;
 		}

@@ -10,17 +10,8 @@
 #include <xtl.h>
 #endif
 
-InputManagerC* InputManagerC::sInstance = NULL;
+InputManagerC* InputManagerC::sInstance = nullptr;
 ButtonState InputManagerC::gameButtonState[NUM_OF_GAME_BUTTONS];
-
-InputManagerC *InputManagerC::CreateInstance()
-{
-	if(sInstance!=NULL)	return sInstance;
-	else
-		
-	sInstance = new InputManagerC();
-	return sInstance;
-}
 
 void InputManagerC::init(){
 	// Clear Key Pressed Array
@@ -137,7 +128,7 @@ void InputManagerC::update(DWORD milliseconds){
     XINPUT_STATE xis;
 
     // Find first connected controller.
-	HANDLE hPad = NULL;
+	HANDLE hPad = nullptr;
     int i;
 	bool8_t noController = TRUE;
     // Check the global gamepad state for a connected device.
@@ -227,7 +218,7 @@ void InputManagerC::HandleDeviceChanges( XPP_DEVICE_TYPE *pxdt, DWORD dwInsert, 
             // Open insertions.
             if( 1 << iPort & dwInsert )
             {
-                g_hPads[iPort] = XInputOpen( pxdt, iPort, XDEVICE_NO_SLOT, NULL );
+                g_hPads[iPort] = XInputOpen( pxdt, iPort, XDEVICE_NO_SLOT, nullptr );
             }
         }
     }

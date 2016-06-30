@@ -21,6 +21,7 @@
 
 #include"random.h"
 #include"Constants.h"
+#include"Vector.h"
 const int JUMPABLE_DISC = 0x00;
 const int ENEMY_DISC = 0x01;
 const int MEGA_JUMP = 0x02;
@@ -58,7 +59,6 @@ public:
 class DiscManagerC
 {
 public:
-	static DiscManagerC* createInstance();
 	static DiscManagerC* getInstance();
 	Vector2  getPosition();
 	//float    getRotationSpeed();
@@ -71,10 +71,7 @@ public:
 	//TexCoord getRandomDiscCoordinates();
 	void     render();
 	void     rotateDiscs(DWORD deltaTime);
-	
-
-	ListIterator<Discs*>* getDiscs();
-	LinkedList<Discs*>*   getDiscList();
+	Library::Vector<Discs*>*   getDiscList();
 	void loadLevelData();
 private:
 	DiscManagerC();
@@ -84,8 +81,7 @@ private:
 	float mRadius;
 	Vector2 mCenter;
 	bool    mDirection;
-	LinkedList<Discs*> *discList;
-	ListIterator<Discs*> *discIterator;
+	Library::Vector<Discs*> discList;
 	float    mAngle;
 	float    startTime;
 	float    currentTime;

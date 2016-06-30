@@ -1,18 +1,13 @@
 #include"DiscManagerC.h"
 #include"PlayerManager.h"
 #include"CameraManager.h"
+using namespace Library;
+DiscManagerC* DiscManagerC::sInstance = nullptr;
 
-DiscManagerC* DiscManagerC::sInstance = NULL;
-
-DiscManagerC* DiscManagerC::createInstance()
-{
-	if (sInstance == NULL){
-		sInstance = new DiscManagerC();
-	}
-	return sInstance;
-}
 DiscManagerC* DiscManagerC::getInstance()
 {
+	if (sInstance == nullptr)
+		sInstance = new DiscManagerC();
 	return sInstance;
 }
 Vector2 DiscManagerC::getPosition()
@@ -35,19 +30,11 @@ bool DiscManagerC::getDirection()
 }
 DiscManagerC::DiscManagerC()
 {
-	discList = NULL;
-	discIterator = NULL;
-	renderer = NULL;
+	renderer = nullptr;
 }
 
 DiscManagerC::~DiscManagerC() {
-	if (discIterator != NULL) {
-		delete discIterator;
-	}
-	if (discList != NULL) {
-		delete discList;
-	}
-	if (renderer != NULL) {
+	if (renderer != nullptr) {
 		delete renderer;
 	}
 }
@@ -57,26 +44,13 @@ void DiscManagerC::init()
 
 	mRotationSpeed = 100;
 
-	if (discList != NULL) {
-		delete discList;
-	}
-	discList = new LinkedList<Discs*>();
-
-	if (discIterator != NULL) {
-		delete discIterator;
-	}
-	discIterator = new ListIterator<Discs*>(discList, discList->m_head);
-
+	discList.Clear();
 	minDistance = (JUMP_FORCE)*(JUMP_FORCE) ;
-
-	
-	if (renderer == NULL) {
+	if (renderer == nullptr) {
 		renderer = new Renderer(TEXT_DISC);
 	}
 	//renderer = new Renderer(TEXT_DISC);
-
 	currentTime = 0;
-	
 	currentTime = 0;
 	randomIterator = 2;
 	lastRadius = 0;
@@ -88,33 +62,22 @@ void DiscManagerC::loadLevelData()
 void DiscManagerC::update(DWORD newMS)
 {
 	currentTime += newMS / 1000.0f;
-
-		rotateDiscs(newMS);
-	
-
+	rotateDiscs(newMS);
 }
 
 void DiscManagerC::rotateDiscs(DWORD newMS)
 {
-	discIterator->Start();
-	while (!discIterator->hasReachedEnd())
+	for(auto currentData : discList)
 	{
-
-		discIterator->data()->currentAngle += discIterator->data()->speed * (newMS / (float)1000);
-
-		discIterator->forth();
+		currentData->currentAngle += currentData->speed * (newMS / (float)1000);
 	}
 }
 void DiscManagerC::render()
 {
 	Vector2 cameraPosition;
-
-	discIterator->Start();
-	
-	while (!discIterator->hasReachedEnd())
+    for(auto currentDisc : discList)
 		{
 			CameraManagerC::getInstance()->getCameraPosition(cameraPosition);
-			Discs *currentDisc = discIterator->data();
 			if (currentDisc->isVisible )
 			{
 				if (currentDisc->direction)
@@ -164,17 +127,12 @@ void DiscManagerC::render()
 				}
 				renderer->DrawSprite(currentDisc->smilePosition.findDiff(cameraPosition), currentDisc->smileWidth, currentDisc->smileHeight, currentDisc->smileCoordinates, 0, currentDisc->center.findDiff(cameraPosition));
 			}
-			discIterator->forth();
 
 		} 
 	
 }
 
-ListIterator<Discs*>* DiscManagerC::getDiscs()
+Vector<Discs*>* DiscManagerC::getDiscList()
 {
-	return discIterator;
-}
-LinkedList<Discs*>* DiscManagerC::getDiscList()
-{
-	return discList;
+	return &discList;
 }

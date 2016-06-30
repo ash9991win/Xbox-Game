@@ -13,8 +13,10 @@ typedef enum {
 class ScoreManagerC
 {
 public:
-	static ScoreManagerC	*CreateInstance();
-	static ScoreManagerC	*GetInstance() { return sInstance; };
+	static ScoreManagerC	*GetInstance() {
+		if (sInstance == nullptr)
+			sInstance = new ScoreManagerC();
+		return sInstance; };
 	~ScoreManagerC();
 	
 	void changeState(SCORE_STATE newState);

@@ -1,20 +1,7 @@
 #include<stdio.h>
 #include"Constants.h"
 #include"GameOverManager.h"
-GameOverManagerC* GameOverManagerC::sInstance = NULL;
-
-GameOverManagerC* GameOverManagerC::createInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-	{
-		sInstance = new GameOverManagerC();
-		return sInstance;
-	}
-}
+GameOverManagerC* GameOverManagerC::sInstance = nullptr;
 void GameOverManagerC::init()
 {
 	renderer = new Renderer(TEXT_GAMEOVER);

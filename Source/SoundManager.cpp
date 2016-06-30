@@ -6,24 +6,14 @@
 //#include "XBApp.h"
 
 
-SoundManagerC* SoundManagerC::sInstance = NULL;
+SoundManagerC* SoundManagerC::sInstance = nullptr;
 //FMOD::Sound *	SoundManagerC::soundFXMap[NUM_OF_GAME_SOUND_FX];
 //FMOD::Sound *	SoundManagerC::musicMap[NUM_OF_GAME_MUSIC];
-
-SoundManagerC *SoundManagerC::CreateInstance()
-{
-	if (sInstance != NULL)	return sInstance;
-	else
-
-		sInstance = new SoundManagerC();
-	return sInstance;
-}
-
 void SoundManagerC::init() {
 	
 #if IS_XBOX
 	// Initialize our Instance with 36 Channels
-	//soundSystem->init(36, FMOD_INIT_NORMAL, NULL);
+	//soundSystem->init(36, FMOD_INIT_NORMAL, nullptr);
 
 
 	//// Create Sounds
@@ -42,10 +32,10 @@ void SoundManagerC::init() {
 
 
 	 hr                  = S_OK;         // Return code
-     pXACT               = NULL;         // XACT Engine instance
-	 pStreamingWaveBank  = NULL;         // XACT Wave Bank
-     pSoundBank          = NULL;         // XACT Sound Bank
-     pSoundSource        = NULL;         // XACT Sound Source
+     pXACT               = nullptr;         // XACT Engine instance
+	 pStreamingWaveBank  = nullptr;         // XACT Wave Bank
+     pSoundBank          = nullptr;         // XACT Sound Bank
+     pSoundSource        = nullptr;         // XACT Sound Source
 
 	 sprintf(musicMap[MUSIC_BACKGROUND],"BgMusic");
 	 sprintf(soundFXMap[SOUND_FX_JUMP],"jump");
@@ -61,8 +51,8 @@ void SoundManagerC::init() {
     }
 
     hStreamingWaveBank = CreateFile( "D:\\media\\sounds\\XactSounds_streaming.xwb",
-                                            GENERIC_READ, FILE_SHARE_READ, NULL,
-                                            OPEN_EXISTING, FILE_FLAG_OVERLAPPED | FILE_FLAG_NO_BUFFERING, NULL );
+                                            GENERIC_READ, FILE_SHARE_READ, nullptr,
+                                            OPEN_EXISTING, FILE_FLAG_OVERLAPPED | FILE_FLAG_NO_BUFFERING, nullptr );
 	 if( INVALID_HANDLE_VALUE == hStreamingWaveBank )
     {
         throw 0;
@@ -75,7 +65,7 @@ void SoundManagerC::init() {
 
 	/*if( FAILED(*/ hr = pXACT->RegisterStreamedWaveBank( &wbParams, &pStreamingWaveBank ) ;/*) )*/
        /* throw 0;*/
-    pbSoundBank = NULL;
+    pbSoundBank = nullptr;
 	dwFileSize  = 0;
 
 	if( FAILED( hr = XBUtil_LoadFile( "D:\\media\\sounds\\XactSounds.xsb", (VOID **)&pbSoundBank, &dwFileSize ) ) )
@@ -91,7 +81,7 @@ void SoundManagerC::init() {
     if( FAILED( XAudioDownloadEffectsImage( "d:\\media\\dsstdfx.bin", 
                                             &EffectLoc, 
                                             XAUDIO_DOWNLOADFX_EXTERNFILE, 
-                                            NULL ) ) )
+                                            nullptr ) ) )
         throw 0;
  
     // Create a 3D sound source to play our cues on 
@@ -99,13 +89,13 @@ void SoundManagerC::init() {
         throw 0;*/
 
 	dwSoundCueIndex = 0;
-    if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( "hit",             // Null-terminated string representing the friendly
+    if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( "hit",             // nullptr-terminated string representing the friendly
                                                                    &dwSoundCueIndex ) ) )   // Pointer to the returned SoundCue index for friendly name
     {
         throw 0;
     }
 	//dwSoundCueIndex = 1;
-	if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( "BgMusic",             // Null-terminated string representing the friendly
+	if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( "BgMusic",             // nullptr-terminated string representing the friendly
                                                                    &dwSoundCueIndex ) ) )   // Pointer to the returned SoundCue index for friendly name
     {
         throw 0;
@@ -116,13 +106,13 @@ void SoundManagerC::init() {
     xactNotificationDesc.wFlags             = XACT_FLAG_NOTIFICATION_USE_SOUNDCUE_INDEX;
     xactNotificationDesc.u.pSoundBank       = pSoundBank;
     xactNotificationDesc.dwSoundCueIndex    = dwSoundCueIndex;
-    xactNotificationDesc.hEvent             = NULL;
+    xactNotificationDesc.hEvent             = nullptr;
 
 	if( FAILED( hr = pXACT->RegisterNotification( &xactNotificationDesc ) ) )
        throw 0;
 
     // Play the sound cue
-   if( FAILED( hr = pSoundBank->Play( dwSoundCueIndex, pSoundSource, XACT_FLAG_SOUNDCUE_AUTORELEASE, NULL) ) )
+   if( FAILED( hr = pSoundBank->Play( dwSoundCueIndex, pSoundSource, XACT_FLAG_SOUNDCUE_AUTORELEASE, nullptr) ) )
         throw 0;
 
   fxTime = 0;
@@ -138,7 +128,7 @@ void	SoundManagerC::update(DWORD milliseconds) {
 		 fxTime += milliseconds / 1000.0f;
 		 //if(fxTime > 1.25f)
 		 //{ 
-			// /*if(FAILED(*/hr = pSoundBank->Stop(dwFxCueIndex,XACT_FLAG_SOUNDCUE_IMMEDIATE,NULL);
+			// /*if(FAILED(*/hr = pSoundBank->Stop(dwFxCueIndex,XACT_FLAG_SOUNDCUE_IMMEDIATE,nullptr);
 			// /*{*/
 			///*	 throw 0;
 			// }*/
@@ -151,12 +141,12 @@ void	SoundManagerC::update(DWORD milliseconds) {
 void	SoundManagerC::playSoundFX(GAME_SOUND_FX soundfx) {
 	
 #if IS_XBOX
-	if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( soundFXMap[soundfx],             // Null-terminated string representing the friendly
+	if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( soundFXMap[soundfx],             // nullptr-terminated string representing the friendly
 																	   &dwSoundCueIndex ) ) )   // Pointer to the returned SoundCue index for friendly name
 	{
 		throw 0;
 	}
-	if (FAILED(hr = pSoundBank->Play(dwSoundCueIndex, pSoundSource, XACT_FLAG_SOUNDCUE_AUTORELEASE, NULL))) 
+	if (FAILED(hr = pSoundBank->Play(dwSoundCueIndex, pSoundSource, XACT_FLAG_SOUNDCUE_AUTORELEASE, nullptr))) 
 	{
 		throw 0;
 	}
@@ -169,7 +159,7 @@ void	SoundManagerC::playMusic(GAME_MUSIC music, bool8_t loop) {
 #if IS_XBOX
 	//	assert(music > INVALID_GAME_MUSIC && music < NUM_OF_GAME_MUSIC);
 	dwSoundCueIndex = 0;
-	if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( musicMap[music],             // Null-terminated string representing the friendly
+	if( FAILED( hr = pSoundBank->GetSoundCueIndexFromFriendlyName( musicMap[music],             // nullptr-terminated string representing the friendly
 																	   &dwSoundCueIndex ) ) )   // Pointer to the returned SoundCue index for friendly name
 		{
 			throw 0;

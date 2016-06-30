@@ -1,20 +1,7 @@
 #include"MainMenuManager.h"
 #include<stdio.h>
 #include"Constants.h"
-MainMenuManagerC* MainMenuManagerC::sInstance = NULL;
-
-MainMenuManagerC* MainMenuManagerC::createInstance()
-{
-	if (sInstance != NULL)
-	{
-		return sInstance;
-	}
-	else
-	{
-		sInstance = new MainMenuManagerC();
-		return sInstance;
-	}
-}
+MainMenuManagerC* MainMenuManagerC::sInstance = nullptr;
 void MainMenuManagerC::init()
 {
 	menurenderer = new Renderer(TEXT_MENU);

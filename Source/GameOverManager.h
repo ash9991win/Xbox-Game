@@ -2,8 +2,10 @@
 class GameOverManagerC
 {
 public:
-	static GameOverManagerC* getInstance() { return sInstance; };
-	static GameOverManagerC* createInstance();
+	static GameOverManagerC* getInstance() {
+		if (sInstance == nullptr)
+			sInstance = new GameOverManagerC();
+		return sInstance; };
 	void init();
 	void render();
 

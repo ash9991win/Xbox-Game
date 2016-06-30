@@ -3,32 +3,23 @@
 #include "physics.h"
 #include"CameraManager.h"
 #include "FontManager.h"
-FontManagerC*	FontManagerC::sInstance = NULL;
-
-FontManagerC *FontManagerC::CreateInstance()
-{
-	if (sInstance != NULL)	return sInstance;
-	else
-
-		sInstance = new FontManagerC();
-	return sInstance;
-}
+FontManagerC*	FontManagerC::sInstance = nullptr;
 
 FontManagerC::FontManagerC()
 {
-	renderer = NULL;
+	renderer = nullptr;
 }
 
 FontManagerC::~FontManagerC()
 {
-	if (renderer != NULL) {
+	if (renderer != nullptr) {
 		delete renderer;
 	}
 }
 
 void FontManagerC::init()
 {
-	if (renderer == NULL) {
+	if (renderer == nullptr) {
 		renderer = new Renderer(TEXT_SCORE_FONT);
 	}
 }

@@ -3,9 +3,10 @@
 class MainMenuManagerC
 {
 public:
-	static MainMenuManagerC* getInstance() { return sInstance; };
-	static MainMenuManagerC* createInstance();
-	bool hasPlayBeenSelected();
+	static MainMenuManagerC* getInstance() {
+		if (sInstance == nullptr)
+			sInstance = new MainMenuManagerC();
+		return sInstance; };
 	void init();
 	void render();
 	
